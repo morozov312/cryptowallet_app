@@ -1,16 +1,11 @@
-import React, { Dispatch, ReactNode } from 'react';
-
-interface IProps {
-  showModalState: boolean;
-  showModalSetStateAction: Dispatch<boolean>;
-  children?: ReactNode;
-}
+import React from 'react';
+import { IModalProps } from 'ts/interfaces/modal';
 
 const Modal = ({
   showModalState,
   showModalSetStateAction,
   children,
-}: IProps) => {
+}: IModalProps) => {
   if (!showModalState) return null;
 
   const onClose = () => {
@@ -23,7 +18,7 @@ const Modal = ({
         <div className='bg-modalColor border-0 rounded-lg shadow-lg relative flex flex-col w-full outline-none focus:outline-none p-10'>
           <svg
             onClick={onClose}
-            className='absolute right-4 top-4'
+            className='absolute right-4 top-4 cursor-pointer'
             xmlns='http://www.w3.org/2000/svg'
             width='14'
             height='14'

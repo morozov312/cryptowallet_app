@@ -9,4 +9,7 @@
   .btn-primary:hover {
     @apply bg-buttonHoverColor;
   }
+  .input {
+    @apply bg-buttonPrimaryColor p-2 rounded-md;
+  }
 }
