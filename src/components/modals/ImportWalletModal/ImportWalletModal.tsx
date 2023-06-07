@@ -1,4 +1,5 @@
 import Modal from '@ui/Modal/Modal';
+import { ethers } from 'ethers';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { SEED_PHRASE_SIZE } from 'ts/constants';
@@ -15,7 +16,8 @@ const ImportWalletModal = ({
     for (const dataKey in data) {
       phrase.push(data[dataKey]);
     }
-    console.log(phrase.join(' '));
+    const wallet = ethers.Wallet.fromPhrase(phrase.join(' '));
+    console.log(wallet);
   };
 
   const renderInputsArray = () => {

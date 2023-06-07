@@ -1,4 +1,4 @@
-import ImportWalletModal from '../modals/ImportWalletModal/ImportWalletModal';
+import ImportWalletModal from 'components/modals/ImportWalletModal/ImportWalletModal';
 import CreateWalletModal from 'components/modals/CreateWalletModal/CreateWalletModal';
 import { ethers } from 'ethers';
 import React, { useState } from 'react';
