@@ -23,7 +23,7 @@ const CreateWalletModal = ({
       </p>
       <div className='flex justify-between gap-3.5 flex-wrap mt-5'>
         {phrase.split(' ').map((word, index) => (
-          <div>
+          <div key={word}>
             <span>{index + 1}: </span>
             <input className='input' key={word} value={word} readOnly={true} />
           </div>
