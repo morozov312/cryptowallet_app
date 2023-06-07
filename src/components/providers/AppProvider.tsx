@@ -1,5 +1,7 @@
+import ErrorModal from 'components/modals/ErrorModal/ErrorModal';
 import { ReactNode } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setIsError } from 'redux/slices/walletSlice';
 import { RootState } from 'redux/store';
 
 interface IProps {
@@ -7,8 +9,17 @@ interface IProps {
 }
 const AppProvider = ({ children }: IProps) => {
   const isError = useSelector((state: RootState) => state.wallet.isError);
+  const dispatch = useDispatch();
 
-  return <>{children}</>;
+  return (
+    <>
+      <ErrorModal
+        showModalState={isError}
+        showModalSetStateAction={() => dispatch(setIsError(false))}
+      />
+      {children}
+    </>
+  );
 };
 
 export default AppProvider;

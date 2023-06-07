@@ -1,4 +1,5 @@
 import './assets/styles/index.css';
+import AppProvider from './components/providers/AppProvider';
 import { store } from './redux/store';
 import { router } from 'components/nav/AppRouter';
 import React from 'react';
@@ -11,6 +12,8 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <Provider store={store}>
-    <RouterProvider router={router} />
+    <AppProvider>
+      <RouterProvider router={router} />
+    </AppProvider>
   </Provider>,
 );
