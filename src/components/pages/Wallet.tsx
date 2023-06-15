@@ -35,9 +35,13 @@ const Wallet = () => {
   }
 
   return (
-    <>
-      <p>{userBalance}</p>
-    </>
+    <div className='flex flex-col justify-center align-middle items-center p-10 gap-12'>
+      <span className='text-4xl'>${userBalance}</span>
+      <div className='flex justify-between w-1/5'>
+        <button>Отправить</button>
+        <button>Получить</button>
+      </div>
+    </div>
   );
 };
 
