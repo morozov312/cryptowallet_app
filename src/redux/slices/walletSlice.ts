@@ -4,8 +4,8 @@ import { ethers } from 'ethers';
 
 export interface WalletState {
   isError: boolean;
-  wallet: ethers.HDNodeWallet | null;
-  provider: ethers.JsonRpcProvider | null;
+  wallet: ethers.Wallet | null;
+  provider: ethers.providers.BaseProvider | null;
 }
 
 const initialState: WalletState = {
@@ -21,10 +21,13 @@ export const walletSlice = createSlice({
     setIsError: (state, action: PayloadAction<boolean>) => {
       state.isError = action.payload;
     },
-    setWallet: (state, action: PayloadAction<ethers.HDNodeWallet>) => {
+    setWallet: (state, action: PayloadAction<ethers.Wallet>) => {
       state.wallet = action.payload;
     },
-    setProvider: (state, action: PayloadAction<ethers.JsonRpcProvider>) => {
+    setProvider: (
+      state,
+      action: PayloadAction<ethers.providers.BaseProvider>,
+    ) => {
       state.provider = action.payload;
     },
   },

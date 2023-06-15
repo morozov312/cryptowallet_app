@@ -24,11 +24,13 @@ const ImportWalletModal = ({
     }
     const phraseStr: string = phrase.join(' ');
     try {
-      const wallet = ethers.Wallet.fromPhrase(phraseStr);
-      const provider = new ethers.JsonRpcProvider(process.env.INFURA_NODE_LINK);
+      const wallet = ethers.Wallet.fromMnemonic(phraseStr);
+      const provider = ethers.getDefaultProvider(
+        process.env.INFURA_NODE_LINK,
+      );
       dispatch(setWallet(wallet));
       dispatch(setProvider(provider));
-      navigate(ROUTES.account);
+      navigate(ROUTES.wallet);
     } catch {
       showModalSetStateAction(false);
       dispatch(setIsError(true));
