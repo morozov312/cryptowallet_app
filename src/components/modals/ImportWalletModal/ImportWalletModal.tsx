@@ -5,7 +5,8 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
-import { setIsError, setProvider, setWallet } from 'redux/slices/walletSlice';
+import { toast } from 'react-toastify';
+import { setProvider, setWallet } from 'redux/slices/walletSlice';
 import { SEED_PHRASE_SIZE } from 'ts/constants';
 import { IModalProps } from 'ts/interfaces/modal';
 
@@ -17,7 +18,7 @@ const ImportWalletModal = ({
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const onSubmit = (data: any) => {
+  const onSubmit = (data: any): void => {
     const phrase: string[] = [];
     for (const dataKey in data) {
       phrase.push(data[dataKey]);
@@ -25,15 +26,12 @@ const ImportWalletModal = ({
     const phraseStr: string = phrase.join(' ');
     try {
       const wallet = ethers.Wallet.fromMnemonic(phraseStr);
-      const provider = ethers.getDefaultProvider(
-        process.env.INFURA_NODE_LINK,
-      );
+      const provider = ethers.getDefaultProvider(process.env.INFURA_NODE_LINK);
       dispatch(setWallet(wallet));
       dispatch(setProvider(provider));
       navigate(ROUTES.wallet);
-    } catch {
-      showModalSetStateAction(false);
-      dispatch(setIsError(true));
+    } catch (e: any) {
+      toast.error(e.message);
     }
   };
 
