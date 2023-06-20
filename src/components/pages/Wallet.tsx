@@ -1,5 +1,6 @@
-import ShowWalletModal from '../modals/ShowWalletModal/ShowWalletModal';
 import axios from 'axios';
+import SendModal from 'components/modals/SendModal/SendModal';
+import ShowWalletModal from 'components/modals/ShowWalletModal/ShowWalletModal';
 import { ROUTES } from 'components/nav/routes';
 import { BigNumber } from 'ethers';
 import { useCallback, useEffect, useState } from 'react';
@@ -13,6 +14,7 @@ const Wallet = () => {
   const navigate = useNavigate();
   const [userUSDBalance, setUserUSDBalance] = useState<string>('');
   const [showWalletModal, setShowWalletModal] = useState<boolean>(false);
+  const [sendModal, setSendModal] = useState<boolean>(false);
 
   const calcBalance = useCallback(async (): Promise<string> => {
     const balance = ((await provider?.getBalance(wallet?.address || '')) ||
@@ -46,8 +48,6 @@ const Wallet = () => {
     return null;
   }
 
-  console.log(provider, wallet);
-
   return (
     <div className='flex flex-col justify-center align-middle items-center p-10 gap-16'>
       <ShowWalletModal
@@ -55,13 +55,14 @@ const Wallet = () => {
         showModalState={showWalletModal}
         showModalSetStateAction={setShowWalletModal}
       />
+      <SendModal
+        showModalState={sendModal}
+        showModalSetStateAction={setSendModal}
+      />
       <span className='text-4xl'>${userUSDBalance}</span>
       <div className='flex justify-between w-1/3'>
         <button className='btn-primary'>Отправить</button>
-        <button
-          onClick={() => setShowWalletModal(true)}
-          className='btn-primary'
-        >
+        <button onClick={() => setSendModal(true)} className='btn-primary'>
           Получить
         </button>
       </div>
