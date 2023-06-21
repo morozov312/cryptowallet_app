@@ -47,15 +47,9 @@ const ImportWalletModal = ({
       showModalSetStateAction={showModalSetStateAction}
     >
       <h2>Введите seed фразу для входа</h2>
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className='flex flex-wrap mt-5 justify-center sm:justify-between'
-      >
+      <form onSubmit={handleSubmit(onSubmit)} className='input-grid-wrapper'>
         {renderInputsArray().map((inputElement) => (
-          <div
-            className='flex gap-2 items-center justify-between basis-1/3 py-2 sm:py-6'
-            key={inputElement}
-          >
+          <div className='input-grid' key={inputElement}>
             <span>{inputElement}: </span>
             <input
               className='input sm:mr-3'
