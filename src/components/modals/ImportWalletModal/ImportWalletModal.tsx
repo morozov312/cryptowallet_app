@@ -26,7 +26,9 @@ const ImportWalletModal = ({
     const phraseStr: string = phrase.join(' ');
     try {
       const wallet = ethers.Wallet.fromMnemonic(phraseStr);
-      const provider = ethers.getDefaultProvider(process.env.INFURA_MAINNET_NODE_LINK);
+      const provider = ethers.getDefaultProvider(
+        process.env.INFURA_MAINNET_NODE_LINK,
+      );
       dispatch(setWallet(wallet));
       dispatch(setProvider(provider));
       navigate(ROUTES.wallet);
@@ -47,13 +49,16 @@ const ImportWalletModal = ({
       <h2>Введите seed фразу для входа</h2>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className='flex justify-between gap-3.5 flex-wrap mt-5'
+        className='flex flex-wrap mt-5 justify-center sm:justify-between'
       >
         {renderInputsArray().map((inputElement) => (
-          <div key={inputElement}>
+          <div
+            className='flex gap-2 items-center justify-between basis-1/3 py-2 sm:py-6'
+            key={inputElement}
+          >
             <span>{inputElement}: </span>
             <input
-              className='input'
+              className='input sm:mr-3'
               {...register(`input${inputElement}`, { required: true })}
             />
           </div>
