@@ -7,7 +7,7 @@ module.exports = {
       backgroundColor: '#0a1e27',
       buttonPrimaryColor: '#2896a5',
       buttonHoverColor: '#38cedf',
-      modalColor: '#06232DCC',
+      modalColor: 'rgba(15,23,42,0.95)',
     },
     extend: {},
   },

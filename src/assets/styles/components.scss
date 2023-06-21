@@ -4,7 +4,7 @@
 
 @layer components {
   .btn-primary {
-    @apply px-6 py-4 rounded-lg bg-buttonPrimaryColor transition-all duration-75;
+    @apply px-6 py-4 rounded-lg bg-buttonPrimaryColor transition-all duration-75 font-semibold;
   }
   .btn-primary:hover {
     @apply bg-buttonHoverColor;
