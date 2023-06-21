@@ -1,15 +1,37 @@
+import { RootState } from '../../../redux/store';
 import Modal from '@ui/Modal/Modal';
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 import { IModalProps } from 'ts/interfaces/modal';
+
+type FormValues = {
+  address: string;
+  amount: string;
+};
 
 const SendModal = ({
   showModalState,
   showModalSetStateAction,
 }: IModalProps) => {
-  const { register, handleSubmit } = useForm();
+  const { wallet } = useSelector((state: RootState) => state.wallet);
+  const { register, handleSubmit } = useForm<FormValues>();
 
-  const onSubmit = (data: any): void => {};
+  const onSubmit = async (data: FormValues): Promise<void> => {
+    try {
+      if (wallet) {
+        const transaction = await wallet.sendTransaction({
+          to: data.address,
+          value: data.amount,
+        });
+        transaction.wait();
+        toast.success(`${data.amount} успешно отправены на ${data.address}`);
+      }
+    } catch (e: any) {
+      toast.error(e.message);
+    }
+  };
 
   return (
     <Modal

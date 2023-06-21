@@ -26,7 +26,7 @@ const ImportWalletModal = ({
     const phraseStr: string = phrase.join(' ');
     try {
       const wallet = ethers.Wallet.fromMnemonic(phraseStr);
-      const provider = ethers.getDefaultProvider(process.env.INFURA_NODE_LINK);
+      const provider = ethers.getDefaultProvider(process.env.INFURA_MAINNET_NODE_LINK);
       dispatch(setWallet(wallet));
       dispatch(setProvider(provider));
       navigate(ROUTES.wallet);

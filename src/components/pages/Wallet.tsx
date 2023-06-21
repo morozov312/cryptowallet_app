@@ -2,7 +2,7 @@ import axios from 'axios';
 import SendModal from 'components/modals/SendModal/SendModal';
 import ShowWalletModal from 'components/modals/ShowWalletModal/ShowWalletModal';
 import { ROUTES } from 'components/nav/routes';
-import { BigNumber } from 'ethers';
+import { BigNumber, utils } from 'ethers';
 import { useCallback, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
@@ -13,6 +13,7 @@ const Wallet = () => {
   const { provider, wallet } = useSelector((state: RootState) => state.wallet);
   const navigate = useNavigate();
   const [userUSDBalance, setUserUSDBalance] = useState<string>('');
+  const [userETHBalance, setUserETHBalance] = useState<string>('');
   const [showWalletModal, setShowWalletModal] = useState<boolean>(false);
   const [sendModal, setSendModal] = useState<boolean>(false);
 
@@ -22,9 +23,9 @@ const Wallet = () => {
     const { data: pricesArr } = await axios.get(
       'https://api.coinbase.com/v2/exchange-rates?currency=ETH',
     );
-    return balance
-      .mul(BigNumber.from(parseInt(pricesArr.data.rates.USD)))
-      .toString();
+    const formattedBalance = utils.formatEther(balance);
+
+    return (pricesArr.data.rates.USD * Number(formattedBalance)).toString();
   }, [provider, wallet?.address]);
 
   useEffect(() => {
@@ -61,8 +62,13 @@ const Wallet = () => {
       />
       <span className='text-4xl'>${userUSDBalance}</span>
       <div className='flex justify-between w-1/3'>
-        <button className='btn-primary'>Отправить</button>
         <button onClick={() => setSendModal(true)} className='btn-primary'>
+          Отправить
+        </button>
+        <button
+          onClick={() => setShowWalletModal(true)}
+          className='btn-primary'
+        >
           Получить
         </button>
       </div>
