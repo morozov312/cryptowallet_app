@@ -1,9 +1,10 @@
-import { RootState } from '../../../redux/store';
 import Modal from '@ui/Modal/Modal';
+import { ethers, utils } from 'ethers';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
+import { RootState } from 'redux/store';
 import { IModalProps } from 'ts/interfaces/modal';
 
 type FormValues = {
@@ -15,20 +16,33 @@ const SendModal = ({
   showModalState,
   showModalSetStateAction,
 }: IModalProps) => {
-  const { wallet } = useSelector((state: RootState) => state.wallet);
+  const { wallet, provider } = useSelector((state: RootState) => state.wallet);
   const { register, handleSubmit } = useForm<FormValues>();
 
   const onSubmit = async (data: FormValues): Promise<void> => {
+    const isValidAddress = utils.isAddress(data.address);
+    if (!isValidAddress) {
+      toast.error('Адресс введен неправильно!');
+      return;
+    }
     try {
-      if (wallet) {
-        const transaction = await wallet.sendTransaction({
+      if (wallet && provider) {
+        const walletSigner = wallet.connect(provider);
+        const gas = provider.getGasPrice();
+        const tx = {
+          from: wallet.address,
           to: data.address,
-          value: data.amount,
-        });
+          value: ethers.utils.parseEther(data.amount),
+          nonce: provider.getTransactionCount(wallet.address, 'latest'),
+          gasLimit: ethers.utils.hexlify(0x100000),
+          gasPrice: gas,
+        };
+        const transaction = await walletSigner.sendTransaction(tx);
         transaction.wait();
         toast.success(`${data.amount} успешно отправены на ${data.address}`);
       }
     } catch (e: any) {
+      console.log(e);
       toast.error(e.message);
     }
   };
@@ -40,19 +54,19 @@ const SendModal = ({
     >
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className='flex flex-col gap-8 justify-center'
+        className='flex flex-col gap-8 justify-center min-w-[40vw]'
       >
         <label className='flex gap-3 items-center'>
           Адрес
           <input
-            className='input'
+            className='input w-full'
             {...register('address', { required: true })}
           />
         </label>
         <label className='flex gap-3 items-center'>
           Сумма
           <input
-            className='input'
+            className='input w-full'
             {...register('amount', { required: true })}
           />
         </label>
