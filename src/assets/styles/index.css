@@ -9,12 +9,13 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Ubuntu', sans-serif;
-  color: white;
+  color: #fefefe;
 }
 
-html,
-body {
-  @apply bg-backgroundColor;
+html {
+  @apply bg-backgroundColor h-screen;
+  background: url('/public/background.jpg') no-repeat;
+  background-size: cover;
 }
 
 a {

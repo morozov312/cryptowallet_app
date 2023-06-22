@@ -21,11 +21,16 @@ const CreateWalletModal = ({
         Пожалуйста запомните seed фразу или запишите ее в надежное место. Вы
         можете войти в свой кошелек используя эту фразу.
       </p>
-      <div className='flex justify-between gap-3.5 flex-wrap mt-5'>
+      <div className='input-grid-wrapper'>
         {phrase.split(' ').map((word, index) => (
-          <div key={word}>
+          <div className='input-grid' key={word}>
             <span>{index + 1}: </span>
-            <input className='input' key={word} value={word} readOnly={true} />
+            <input
+              className='input sm:mr-3'
+              key={word}
+              value={word}
+              readOnly={true}
+            />
           </div>
         ))}
       </div>

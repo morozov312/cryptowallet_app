@@ -4,12 +4,18 @@
 
 @layer components {
   .btn-primary {
-    @apply px-6 py-4 rounded-lg bg-buttonPrimaryColor transition-all duration-75;
+    @apply px-6 py-4 rounded-lg bg-buttonPrimaryColor transition-all duration-75 font-semibold;
   }
   .btn-primary:hover {
     @apply bg-buttonHoverColor;
   }
   .input {
     @apply bg-buttonPrimaryColor p-2 rounded-md;
+  }
+  .input-grid-wrapper {
+    @apply flex flex-wrap mt-5 justify-center sm:justify-between;
+  }
+  .input-grid {
+    @apply flex gap-2 items-center justify-between basis-1/3 py-2 sm:py-6;
   }
 }
