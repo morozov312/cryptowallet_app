@@ -62,13 +62,13 @@ const Wallet = () => {
         showModalSetStateAction={setSendModal}
       />
       {userETHBalance.length ? (
-        <span className='text-4xl'>
+        <span className='md:text-4xl text-2xl'>
           ETH {userETHBalance} / $ {userUSDBalance}
         </span>
       ) : (
         <span className='animate-pulse'>Загрузка баланса</span>
       )}
-      <div className='flex justify-between w-1/3'>
+      <div className='flex justify-between gap-8 flex-col md:flex-row'>
         <button onClick={() => setSendModal(true)} className='btn-primary'>
           Отправить
         </button>
