@@ -1,7 +1,7 @@
 import React from 'react';
-import { IModalProps } from 'ts/interfaces/modal';
+import { IModalProps } from 'shared/ui';
 
-const Modal = ({
+export const Modal = ({
   showModalState,
   showModalSetStateAction,
   children,
@@ -36,5 +36,3 @@ const Modal = ({
     </div>
   );
 };
-
-export default Modal;

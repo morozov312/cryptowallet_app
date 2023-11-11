@@ -1,13 +1,13 @@
 import axios from 'axios';
-import SendModal from 'components/modals/SendModal/SendModal';
-import ShowWalletModal from 'components/modals/ShowWalletModal/ShowWalletModal';
-import { ROUTES } from 'components/nav/routes';
+import SendModal from 'features/modals/SendModal/SendModal';
+import ShowWalletModal from 'features/modals/ShowWalletModal/ShowWalletModal';
+import { ROUTES } from 'app/nav/routes';
 import { BigNumber, utils } from 'ethers';
 import { useCallback, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
-import { RootState } from 'redux/store';
+import { RootState } from 'app/redux/store';
 
 const Wallet = () => {
   const { provider, wallet } = useSelector((state: RootState) => state.wallet);

@@ -1,14 +1,14 @@
-import Modal from '@ui/Modal/Modal';
-import { ROUTES } from 'components/nav/routes';
+import Modal from 'shared/ui/components/Modal/Modal';
+import { ROUTES } from 'app/nav/routes';
 import { ethers } from 'ethers';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
-import { setProvider, setWallet } from 'redux/slices/walletSlice';
-import { SEED_PHRASE_SIZE } from 'ts/constants';
-import { IModalProps } from 'ts/interfaces/modal';
+import { setProvider, setWallet } from 'app/redux/slices/walletSlice';
+import { SEED_PHRASE_SIZE } from 'shared/ui/ts/constants';
+import { IModalProps } from 'shared/ui/ts/modalInterfaces';
 
 const ImportWalletModal = ({
   showModalState,

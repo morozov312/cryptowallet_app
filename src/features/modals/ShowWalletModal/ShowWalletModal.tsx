@@ -1,6 +1,6 @@
-import Modal from '@ui/Modal/Modal';
+import Modal from 'shared/ui/components/Modal/Modal';
 import { QRCodeSVG } from 'qrcode.react';
-import { IModalProps } from 'ts/interfaces/modal';
+import { IModalProps } from 'shared/ui/ts/modalInterfaces';
 
 interface IShowWalletModal extends IModalProps {
   address: string;

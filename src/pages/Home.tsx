@@ -1,6 +1,6 @@
-import walletImage from 'assets/images/wallet.png';
-import CreateWalletModal from 'components/modals/CreateWalletModal/CreateWalletModal';
-import ImportWalletModal from 'components/modals/ImportWalletModal/ImportWalletModal';
+import walletImage from 'shared/ui/assets/images/wallet.png';
+import CreateWalletModal from 'features/modals/CreateWalletModal/CreateWalletModal';
+import ImportWalletModal from 'features/modals/ImportWalletModal/ImportWalletModal';
 import { ethers } from 'ethers';
 import React, { useState } from 'react';
 
