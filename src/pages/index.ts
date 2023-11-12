@@ -1,2 +1,2 @@
-export * from './Home'
-export * from './Wallet'
+export * from './home';
+export * from './wallet';
