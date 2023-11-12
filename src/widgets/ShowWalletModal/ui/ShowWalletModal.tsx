@@ -5,7 +5,7 @@ interface IShowWalletModal extends IModalProps {
   address: string;
 }
 
-const ShowWalletModal = ({
+export const ShowWalletModal = ({
   showModalState,
   showModalSetStateAction,
   address,
@@ -26,5 +26,3 @@ const ShowWalletModal = ({
     </Modal>
   );
 };
-
-export default ShowWalletModal;

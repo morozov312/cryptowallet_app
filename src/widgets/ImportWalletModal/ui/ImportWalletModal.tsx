@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
 import { Modal, IModalProps, SEED_PHRASE_SIZE } from 'shared/ui';
 
-const ImportWalletModal = ({
+export const ImportWalletModal = ({
   showModalState,
   showModalSetStateAction,
 }: IModalProps) => {
@@ -62,5 +62,3 @@ const ImportWalletModal = ({
     </Modal>
   );
 };
-
-export default ImportWalletModal;

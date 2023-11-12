@@ -6,7 +6,7 @@ interface IProps extends IModalProps {
   phrase: string;
 }
 
-const CreateWalletModal = ({
+export const CreateWalletModal = ({
   showModalState,
   showModalSetStateAction,
   phrase,
@@ -38,4 +38,3 @@ const CreateWalletModal = ({
   );
 };
 
-export default CreateWalletModal;

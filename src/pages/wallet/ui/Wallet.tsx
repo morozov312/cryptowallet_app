@@ -1,13 +1,12 @@
-import axios from 'axios';
-import SendModal from 'features/modals/SendModal/SendModal';
-import ShowWalletModal from 'features/modals/ShowWalletModal/ShowWalletModal';
 import { ROUTES } from 'app/nav/routes';
+import { RootState } from 'app/redux/store';
+import axios from 'axios';
 import { BigNumber, utils } from 'ethers';
 import { useCallback, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
-import { RootState } from 'app/redux/store';
+import { SendModal, ShowWalletModal } from 'widgets';
 
 export const Wallet = () => {
   const { provider, wallet } = useSelector((state: RootState) => state.wallet);
@@ -85,4 +84,3 @@ export const Wallet = () => {
     </div>
   );
 };
-

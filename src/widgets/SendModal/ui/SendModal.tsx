@@ -11,7 +11,7 @@ type FormValues = {
   amount: string;
 };
 
-const SendModal = ({
+export const SendModal = ({
   showModalState,
   showModalSetStateAction,
 }: IModalProps) => {
@@ -75,4 +75,3 @@ const SendModal = ({
   );
 };
 
-export default SendModal;
