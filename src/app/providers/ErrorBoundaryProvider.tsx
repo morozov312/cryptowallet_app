@@ -5,7 +5,7 @@ interface IProps {
   children: ReactNode;
 }
 
-class ErrorBoundaryProvider extends Component<IProps> {
+export class ErrorBoundaryProvider extends Component<IProps> {
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     toast.error(error.message);
   }
@@ -15,4 +15,4 @@ class ErrorBoundaryProvider extends Component<IProps> {
   }
 }
 
-export default ErrorBoundaryProvider;
+

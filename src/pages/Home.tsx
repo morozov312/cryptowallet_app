@@ -4,7 +4,7 @@ import ImportWalletModal from 'features/modals/ImportWalletModal/ImportWalletMod
 import { ethers } from 'ethers';
 import React, { useState } from 'react';
 
-const Home = () => {
+export const Home = () => {
   const [showCreateWalletModal, setShowCreateWalletModal] =
     useState<boolean>(false);
   const [showImportWalletModal, setShowImportWalletModal] =
@@ -51,4 +51,3 @@ const Home = () => {
   );
 };
 
-export default Home;

@@ -1,6 +1,5 @@
+import { store, ErrorBoundaryProvider } from './app';
 import './shared/ui/assets/styles/index.css';
-import ErrorBoundaryProvider from './app/providers/ErrorBoundaryProvider';
-import { store } from './app';
 import { router } from 'app/nav/AppRouter';
 import React from 'react';
 import ReactDOM from 'react-dom/client';

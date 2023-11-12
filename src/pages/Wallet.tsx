@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
 import { RootState } from 'app/redux/store';
 
-const Wallet = () => {
+export const Wallet = () => {
   const { provider, wallet } = useSelector((state: RootState) => state.wallet);
   const navigate = useNavigate();
   const [userUSDBalance, setUserUSDBalance] = useState<string>('');
@@ -86,4 +86,3 @@ const Wallet = () => {
   );
 };
 
-export default Wallet;

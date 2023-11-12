@@ -1,5 +1,5 @@
-import Modal from 'shared/ui/components/Modal/Modal';
 import React from 'react';
+import { Modal } from 'shared/ui';
 import { IModalProps } from 'shared/ui/ts/modalInterfaces';
 
 interface IProps extends IModalProps {

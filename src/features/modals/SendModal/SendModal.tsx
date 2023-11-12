@@ -1,11 +1,10 @@
-import Modal from 'shared/ui/components/Modal/Modal';
+import { RootState } from 'app';
 import { ethers, utils } from 'ethers';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
-import { RootState } from 'app/redux/store';
-import { IModalProps } from 'shared/ui/ts/modalInterfaces';
+import { Modal, IModalProps } from 'shared/ui';
 
 type FormValues = {
   address: string;

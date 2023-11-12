@@ -1,21 +1,19 @@
-import Modal from 'shared/ui/components/Modal/Modal';
-import { ROUTES } from 'app/nav/routes';
+import { AppDispatch, ROUTES } from 'app';
+import { setProvider, setWallet } from 'app/redux/slices/walletSlice';
 import { ethers } from 'ethers';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
-import { setProvider, setWallet } from 'app/redux/slices/walletSlice';
-import { SEED_PHRASE_SIZE } from 'shared/ui/ts/constants';
-import { IModalProps } from 'shared/ui/ts/modalInterfaces';
+import { Modal, IModalProps, SEED_PHRASE_SIZE } from 'shared/ui';
 
 const ImportWalletModal = ({
   showModalState,
   showModalSetStateAction,
 }: IModalProps) => {
   const { register, handleSubmit } = useForm();
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
   const onSubmit = (data: any): void => {

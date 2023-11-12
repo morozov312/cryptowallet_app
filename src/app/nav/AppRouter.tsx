@@ -1,7 +1,6 @@
 import { ROUTES } from './routes';
-import Home from 'pages/Home';
-import Wallet from 'pages/Wallet';
 import { createBrowserRouter } from 'react-router-dom';
+import {Home, Wallet} from "pages";
 
 export const router = createBrowserRouter([
   {
